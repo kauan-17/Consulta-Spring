@@ -1,41 +1,39 @@
-# Consulta-Spring
-# 🦷 Sistema de Gerenciamento de Consultas Odontológicas
+# 🦷 Sistema de Gerenciamento de Consultas Médicas
 
-Este projeto é um sistema de gerenciamento de consultas médicas, com foco em clínicas odontológicas. Desenvolvido em Java com Spring Boot e JPA, ele permite o controle completo de consultas, pacientes, secretárias e agenda.
+Este é um sistema simples de gerenciamento de consultas médicas, desenvolvido em **Java** com **Spring Boot** e **Hibernate**, utilizando **PostgreSQL** como banco de dados. O objetivo é permitir o controle de pacientes, secretárias, consultas e agenda.
 
-## 📋 Funcionalidades
+---
 
-- 📅 Cadastro e gerenciamento de **consultas**
-- 🧑‍⚕️ Registro de **dentistas** e **secretárias**
-- 🧑‍💼 Cadastro de **pacientes**
-- 🗓️ Controle de **agenda** de consultas
-- 🔍 Buscar, editar e remover registros
-- 📑 Integração com banco de dados via JPA/Hibernate
-- 🧪 Testes de API com Swagger
+## 🚀 Funcionalidades
 
-## 🛠️ Tecnologias Utilizadas
+- 📋 Cadastro, listagem, atualização e exclusão de:
+  - Pacientes
+  - Secretárias
+  - Consultas
+  - Agendas
+- 🔍 Busca de dados relacionados (ex: listar todas as consultas de um paciente)
+- 🧠 Relacionamentos com JPA entre entidades (Ex: Consulta ↔ Agenda)
+- 🧪 Testes de requisições via Swagger UI
 
-- Java 17
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- PostgreSQL
-- Swagger (Documentação e testes de API)
+---
 
-## 🚀 Como executar
-
-### Pré-requisitos
+## 🛠️ Tecnologias utilizadas
 
 - Java 17+
-- Maven
+- Spring Boot
+- Hibernate / JPA
 - PostgreSQL
+- Maven
+- Swagger (OpenAPI)
 
-### Passos
+---
+
+## 🏗️ Estrutura do Projeto
 
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
-cd nome-do-repositorio
-
-# Instale as dependências e rode o projeto
-./mvnw spring-boot:run
+src/
+├── controller/       # Controllers REST
+├── model/            # Entidades JPA
+├── repository/       # Interfaces de acesso ao banco (JPA Repositories)
+├── service/          # Regras de negócio (opcional)
+└── DemoApplication.java

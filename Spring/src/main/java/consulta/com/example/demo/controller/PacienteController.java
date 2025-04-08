@@ -1,32 +1,45 @@
 package consulta.com.example.demo.controller;
 
-import java.util.List;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import consulta.com.example.demo.model.Paciente;
 import consulta.com.example.demo.repository.PacienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/pacientes")
-class PacienteController {
-    private final PacienteRepository repository;
-    public PacienteController(PacienteRepository repository) {
-        this.repository = repository;
+public class PacienteController {
+
+    @Autowired
+    private PacienteRepository pacienteRepository;
+
+    @PostMapping
+    public Paciente cadastrarPaciente(@RequestBody Paciente paciente) {
+        return pacienteRepository.save(paciente);
     }
 
     @GetMapping
-    public List<Paciente> listar() {
-        return repository.findAll();
+    public List<Paciente> listarPacientes() {
+        return pacienteRepository.findAll();
     }
 
-    @PostMapping
-    public Paciente criar(@RequestBody Paciente paciente) {
-        return repository.save(paciente);
+    @GetMapping("/{id}")
+    public Paciente buscarPorId(@PathVariable Long id) {
+        return pacienteRepository.findById(id).orElse(null);
+    }
+
+    @PutMapping("/{id}")
+    public Paciente atualizarPaciente(@PathVariable Long id, @RequestBody Paciente pacienteAtualizado) {
+        return pacienteRepository.findById(id).map(paciente -> {
+            paciente.setNome(pacienteAtualizado.getNome());
+            paciente.setCpf(pacienteAtualizado.getCpf());
+            return pacienteRepository.save(paciente);
+        }).orElse(null);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletarPaciente(@PathVariable Long id) {
+        pacienteRepository.deleteById(id);
     }
 }
-

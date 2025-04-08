@@ -13,9 +13,19 @@ class Secretaria {
     private Long id;
     private String nome;
     private int rg;
+    private String cpf;
 
     @OneToMany(mappedBy = "secretaria")
     private List<Consulta> consultas;
+
+   
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     public Long getId() {
         return id;

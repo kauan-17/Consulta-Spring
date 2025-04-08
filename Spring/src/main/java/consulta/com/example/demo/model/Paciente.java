@@ -11,12 +11,25 @@ class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String cpf;
     private String nome;
     private String usuario;
     private String senha;
 
 
     
+    public String getCpf() {
+        return cpf;
+    }
+
+
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+
+
     public Long getId() {
         return id;
     }

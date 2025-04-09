@@ -1,62 +1,58 @@
 # 🏥 Sistema de Consultas Médicas
 
-Este é um projeto backend desenvolvido em **Java com Spring Boot** para o gerenciamento de consultas médicas. O sistema controla pacientes, secretárias, dentistas, consultas e agendas.
+Este é um projeto **backend** desenvolvido em **Java com Spring Boot**, que oferece uma **API RESTful** para o gerenciamento de consultas médicas. O sistema permite o controle de pacientes, secretárias, dentistas, consultas e agendas.
 
 ## 🚀 Tecnologias Utilizadas
 
 - Java 21  
 - Spring Boot  
+- Spring Web (API REST)  
 - Spring Data JPA  
 - Hibernate  
 - PostgreSQL  
 - Swagger/OpenAPI  
 - Maven
 
-## 🗂️ Entidades do Sistema
+## 🧩 Arquitetura REST
 
-- **Paciente**
-  - `id` (Long)
-  - `nome` (String)
-  - `cpf` (String)
-  - `usuario` (String)
-  - `senha` (String)
+O sistema foi estruturado como uma **API REST**, com endpoints para:
 
-- **Secretária**
-  - `id` (Long)
-  - `nome` (String)
-  - `cpf` (String)
-  - `rg` (int)
-
-- **Consulta**
-  - `id` (Long)
-  - `data` (String ou Date)
-  - `nomeDentista` (String)
-  - `paciente` (Relacionamento)
-  - `secretaria` (Relacionamento)
-  - `agenda` (Relacionamento)
-
-- **Agenda**
-  - `id` (Long)
-  - `dataAgendada` (LocalDate)
-
-## 📚 Funcionalidades Implementadas
-
-- Cadastro, listagem, atualização e exclusão de:
+- `GET`, `POST`, `PUT`, `DELETE` de:
   - Pacientes
   - Secretárias
   - Consultas
   - Agendas
 
-- Integração entre entidades via relacionamentos JPA
+As requisições são mapeadas nos controllers com `@RestController`, utilizando os verbos HTTP apropriados para cada operação.
 
-- Documentação da API gerada automaticamente via Swagger
+## 🗂️ Entidades do Sistema
+
+- **Paciente**
+  - `id`, `nome`, `cpf`, `usuario`, `senha`
+
+- **Secretária**
+  - `id`, `nome`, `cpf`, `rg`
+
+- **Consulta**
+  - `id`, `data`, `nomeDentista`, `paciente`, `secretaria`, `agenda`
+
+- **Agenda**
+  - `id`, `dataAgendada`
+
+## 📚 Funcionalidades da API
+
+- **Pacientes:** cadastrar, listar, atualizar e excluir
+- **Secretárias:** cadastrar, listar, atualizar e excluir
+- **Consultas:** agendar, listar, editar e remover
+- **Agendas:** registrar e gerenciar datas de agendamentos
 
 ## 🔧 Configuração do Banco de Dados
 
 Banco: **PostgreSQL**  
 Nome do banco: `consultas_db`
 
-As configurações estão no arquivo `application.properties`:
+Configuração no `application.properties`:
+
 
 📁 Estrutura de Diretórios
 bash
